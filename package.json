@@ -1,6 +1,6 @@
 {
   "name": "drone-joystick",
-  "description": "",
+  "description": "Control AR.Drones using any SDL-compatible Joystick (PS3 Sixaxis, etc.)",
   "keywords": [
     "sdl",
     "AR.Drone",
