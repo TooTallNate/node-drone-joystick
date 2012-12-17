@@ -1,0 +1,57 @@
+PS3 Controller:
+
+Left joystick:
+
+up:
+{ type: 'JOYAXISMOTION', which: 0, axis: 1, float: '-1.00' }
+
+down:
+{ type: 'JOYAXISMOTION', which: 0, axis: 1, float: '1.00' }
+
+left:
+{ type: 'JOYAXISMOTION', which: 0, axis: 0, float: '-1.00' }
+
+right:
+{ type: 'JOYAXISMOTION', which: 0, axis: 0, float: '1.00' }
+
+
+Right Joystick:
+
+up:
+{ type: 'JOYAXISMOTION', which: 0, axis: 3, float: '-1.00' }
+
+down:
+{ type: 'JOYAXISMOTION', which: 0, axis: 3, float: '1.00' }
+
+left:
+{ type: 'JOYAXISMOTION', which: 0, axis: 2, float: '-1.00' }
+
+right:
+{ type: 'JOYAXISMOTION', which: 0, axis: 2, float: '1.00' }
+
+
+Buttons:
+
+X:
+{ type: 'JOYBUTTONDOWN', which: 0, button: 14 }
+{ type: 'JOYBUTTONUP', which: 0, button: 14 }
+
+Square:
+{ type: 'JOYBUTTONDOWN', which: 0, button: 15 }
+{ type: 'JOYBUTTONUP', which: 0, button: 15 }
+
+Triangle:
+{ type: 'JOYBUTTONDOWN', which: 0, button: 12 }
+{ type: 'JOYBUTTONUP', which: 0, button: 12 }
+
+Circle:
+{ type: 'JOYBUTTONDOWN', which: 0, button: 13 }
+{ type: 'JOYBUTTONUP', which: 0, button: 13 }
+
+Start:
+{ type: 'JOYBUTTONDOWN', which: 0, button: 3 }
+{ type: 'JOYBUTTONUP', which: 0, button: 3 }
+
+Select:
+{ type: 'JOYBUTTONDOWN', which: 0, button: 0 }
+{ type: 'JOYBUTTONUP', which: 0, button: 0 }

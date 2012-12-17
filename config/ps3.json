@@ -1,0 +1,13 @@
+{
+  "axis": {
+    "0": [ "left", "right" ],
+    "1": [ "front", "back" ],
+    "2": [ "counterClockwise", "clockwise" ],
+    "3": [ "up", "down" ]
+  },
+  "buttons": {
+    "3": [ "disableEmergency" ],
+    "12": [ "takeoff" ],
+    "14": [ "land" ]
+  }
+}
