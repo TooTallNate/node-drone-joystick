@@ -24,12 +24,14 @@ program
  */
 
 var config = require('../config/' + program.controls);
+console.log('Loaded %j config', program.controls);
 
 /**
  * Create client connection to the AR.Drone.
  */
 
 var client  = arDrone.createClient({ ip: program.ip });
+console.log('Connecting to drone at %j', program.ip);
 
 /**
  * Init SDL.
