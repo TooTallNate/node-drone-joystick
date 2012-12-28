@@ -1,8 +1,20 @@
 node-drone-joystick
 ===================
 
+Control your Parrot AR.Drone using any SDL-compatible controller. Just write
+simple JSON configuration files.
+
 To see a video of this program in action:
 http://www.youtube.com/watch?v=g2ZEBCeQkuc
+
+Installation
+------------
+
+You can install with `npm`:
+
+``` bash
+$ npm install -g drone-joystick
+```
 
 "config" files
 --------------
