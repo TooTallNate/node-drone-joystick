@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 /**
  * Module dependencies.
@@ -5,22 +6,48 @@
 
 var SDL = require('sdl');
 var arDrone = require('ar-drone');
-var config = require('./config/ps3.json');
+var program = require('commander');
+var debug = require('debug')('drone-joystick');
 
-var client  = arDrone.createClient({ ip: process.argv[2] || '192.168.1.1' });
+/**
+ * Setup command-line options.
+ */
+
+program
+  .version(require('../package').version)
+  .option('-i, --ip [val]', 'drone IP address or hostname to connect to (default: "192.168.1.1")', '192.168.1.1')
+  .option('-c, --controls [mode]', 'controller configuration to use (default: "ps3")', 'ps3')
+  .parse(process.argv);
+
+/**
+ * Attempt to load the requested config.
+ */
+
+var config = require('../config/' + program.controls);
+
+/**
+ * Create client connection to the AR.Drone.
+ */
+
+var client  = arDrone.createClient({ ip: program.ip });
+
+/**
+ * Init SDL.
+ * XXX: Meh, a VIDEO screen needs to be initialized in order for JOYSTICK events
+ *      to come through... it would be nice if there was a way around this...
+ */
 
 SDL.init(SDL.INIT.VIDEO | SDL.INIT.JOYSTICK);
 process.on('exit', function () { SDL.quit(); });
 
 var screen = SDL.setVideoMode(320, 200, 0, 0);
-console.log(screen);
 
 var joys = [];
 for (var i = 0, l = SDL.numJoysticks(); i < l; i++) {
   joys[i] = SDL.joystickOpen(i);
-  console.log('joystick ' + i + ': ' + SDL.joystickName( i ));
+  debug('joystick ' + i + ': ' + SDL.joystickName( i ));
 }
-console.log(joys);
+debug(joys);
 
 // range of the "axis" events (+/-)
 var range = Math.pow(2, 16) / 2;
@@ -33,7 +60,7 @@ SDL.events.on('event', function (event) {
       event.float = event.value / range;
       data = config.axis[event.axis];
       if (!data) return;
-      console.log(event, data);
+      debug(event, data);
       func = data[event.float > 0 ? 1 : 0];
       client[func](Math.abs(event.float));
       break;
@@ -41,7 +68,7 @@ SDL.events.on('event', function (event) {
       data = config.buttons[event.button];
       if (!data) return;
       func = data[0];
-      console.log(event, data);
+      debug(event, data);
       client[func]();
       break;
     case 'JOYBUTTONUP':

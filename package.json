@@ -18,10 +18,12 @@
     "url": "git://github.com/TooTallNate/node-drone-joystick.git"
   },
   "bin": {
-    "drone-joystick": "./index.js"
+    "drone-joystick": "bin/drone-joystick"
   },
   "dependencies": {
-    "sdl": "~0.1.8",
-    "debug": "~0.0.5",
+    "ar-drone": "~0.0.5",
+    "commander": "~1.1.1",
+    "debug": "~0.7.0",
+    "sdl": "~0.1.8"
   }
 }
